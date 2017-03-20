@@ -41,7 +41,7 @@ namespace XamFormsPocketSphinx.Droid
             global::Xamarin.Forms.Forms.Init(this, bundle);
 
 
-            RunRecognizerSetup();
+            
 
 
 
@@ -120,6 +120,8 @@ namespace XamFormsPocketSphinx.Droid
             //{
             //    System.Console.WriteLine(s);
             //}
+            
+            RunRecognizerSetup();
 
             LoadApplication(new App());
         }

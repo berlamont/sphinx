@@ -42,7 +42,7 @@ namespace XamarinAndroidSphinx
                     AudioSource.VoiceRecognition, sampleRate,
                     ChannelIn.Mono,
                     Encoding.Pcm16bit, bufferSize * 2);
-
+            
             if (_recorder.State == State.Uninitialized)
             {
                 _recorder.Release();
@@ -157,6 +157,7 @@ namespace XamarinAndroidSphinx
                     if (_decoder.GetInSpeech() != inSpeech)
                     {
                         inSpeech = _decoder.GetInSpeech();
+                        System.Diagnostics.Debug.Write("\nSpeech mode = " + inSpeech );
                         OnInSpeechChange(inSpeech);
                     }
 

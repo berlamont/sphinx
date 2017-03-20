@@ -100,24 +100,27 @@ namespace XamarinAndroidSphinx
             OutputStream destination = new FileOutputStream(destinationFile);
             byte[] buffer = new byte[1024];
             int nread;
-            
+
             while ((nread = await source.ReadAsync(buffer, 0, buffer.Length)) > 0)
             {
                 await destination.WriteAsync(buffer, 0, nread);
                 await destination.FlushAsync();
             }
+            
             destination.Close();
 
             return destinationFile;
         }
 
-        public async void updateItemList(Dictionary<string, string> items)
+        public async Task updateItemList(Dictionary<string, string> items)
         {
             File assetListFile = new File(externalDir, ASSET_LIST_NAME);
-            // todo check if necessary
-            PrintWriter pw = new PrintWriter(assetListFile);
+            PrintWriter pw = new PrintWriter(new File(assetListFile.Path));
             foreach (var entry in items)
-                await pw.FormatAsync("%s %s\n", entry.Key, entry.Value);
+            {
+                await pw.WriteAsync($"{entry.Key} {entry.Value}\n");
+                System.Diagnostics.Debug.WriteLine(this.GetType().Name, $"Wrinting {entry.Key} {entry.Value} in {assetListFile.Path}");
+            }
             pw.Close();
         }
 
@@ -132,7 +135,7 @@ namespace XamarinAndroidSphinx
             {
                 if (externalItems.ContainsKey(path) && externalItems[path].Equals(items[path]))
                 {
-                    System.Diagnostics.Debug.WriteLine(this.GetType().Name, String.Format("Skipping asset %s: checksums are equal", path));
+                    System.Diagnostics.Debug.WriteLine(this.GetType().Name, $"Skipping asset {path}: checksums are equal");
                 }
                 else
                 {
@@ -146,17 +149,17 @@ namespace XamarinAndroidSphinx
             foreach (string path in newItems)
             {
                 File file = await Copy(path);
-                System.Diagnostics.Debug.WriteLine(this.GetType().Name, String.Format("Copying asset %s to %s", path, file));
+                System.Diagnostics.Debug.WriteLine(this.GetType().Name, $"Copying asset {path} to {file}");
             }
 
             foreach (string path in unusedItems)
             {
                 File file = new File(externalDir, path);
                 file.Delete();
-                System.Diagnostics.Debug.WriteLine(this.GetType().Name, String.Format("Removing asset %s", file));
+                System.Diagnostics.Debug.WriteLine(this.GetType().Name, $"Removing asset {file}");
             }
 
-            //updateItemList(items);
+            await updateItemList(items);
             return externalDir;
         }
     }
