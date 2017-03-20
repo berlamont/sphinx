@@ -85,7 +85,7 @@ namespace XamarinAndroidSphinx
                 }
                 return items;
             }
-            catch (IOException e)
+            catch (Exception e)
             {
                 return new Dictionary<string, string>();
             }
@@ -130,10 +130,14 @@ namespace XamarinAndroidSphinx
 
             foreach (string path in items.Keys)
             {
-                if (!items[path].Equals(externalItems[path]) || !(new File(externalDir, path).Exists()))
-                    newItems.Add(path);
-                else
+                if (externalItems.ContainsKey(path) && externalItems[path].Equals(items[path]))
+                {
                     System.Diagnostics.Debug.WriteLine(this.GetType().Name, String.Format("Skipping asset %s: checksums are equal", path));
+                }
+                else
+                {
+                    newItems.Add(path);
+                }
             }
 
             unusedItems.AddRange(externalItems.Keys);

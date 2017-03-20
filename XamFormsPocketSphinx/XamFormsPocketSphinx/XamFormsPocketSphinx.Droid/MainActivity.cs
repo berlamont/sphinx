@@ -136,10 +136,12 @@ namespace XamFormsPocketSphinx.Droid
             // The recognizer can be configured to perform multiple searches
             // of different kind and switch between them
 
-            recognizer = SpeechRecognizerSetup.defaultSetup()
+            Config config = Decoder.DefaultConfig();
+
+            recognizer = new SpeechRecognizerSetup(config)
                 .SetAcousticModel(new File(assetsDir, "en-us-ptm"))
                 .SetDictionary(new File(assetsDir, "cmudict-en-us.dict"))
-                .SetRawLogDir(assetsDir) // To disable logging of raw audio comment out this call (takes a lot of space on the device)
+                //.SetRawLogDir(assetsDir) // To disable logging of raw audio comment out this call (takes a lot of space on the device)
                 .GetRecognizer();
 
             recognizer.Result += Recognizer_Result;
@@ -168,6 +170,9 @@ namespace XamFormsPocketSphinx.Droid
             // Phonetic search
             /*File phoneticModel = new File(assetsDir, "en-phone.dmp");
             recognizer.Ad(PHONE_SEARCH, phoneticModel);*/
+
+            switchSearch(KWS_SEARCH);
+
         }
 
         private void Recognizer_Timeout(object sender, EventArgs e)
@@ -183,6 +188,10 @@ namespace XamFormsPocketSphinx.Droid
         private void Recognizer_Result(object sender, SpeechResultEvent e)
         {
             bool isFinalResult = e.FinalResult;
+            if (e.Hypothesis != null)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Hypothesis.Hypstr);
+            }
         }
 
         private void switchSearch(String searchName)

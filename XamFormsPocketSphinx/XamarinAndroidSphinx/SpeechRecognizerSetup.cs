@@ -28,7 +28,7 @@ namespace XamarinAndroidSphinx
         //    return new SpeechRecognizerSetup(FileConfig(configFile.getPath()));
         //}
 
-        private SpeechRecognizerSetup(Config config)
+        public SpeechRecognizerSetup(Config config)
         {
             this.config = config;
         }

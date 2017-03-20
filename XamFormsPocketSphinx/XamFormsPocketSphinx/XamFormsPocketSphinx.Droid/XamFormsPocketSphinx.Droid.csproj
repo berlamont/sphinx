@@ -163,6 +163,10 @@
     <AndroidAsset Include="Assets\sync\menu.gram.md5" />
     <AndroidAsset Include="Assets\sync\weather.dmp" />
     <AndroidAsset Include="Assets\sync\weather.dmp.md5" />
+    <AndroidNativeLibrary Include="lib\arm64-v8a\libpocketsphinxwrap.so" />
+    <AndroidNativeLibrary Include="lib\armeabi-v7a\libpocketsphinxwrap.so" />
+    <AndroidNativeLibrary Include="lib\x86\libpocketsphinxwrap.so" />
+    <AndroidNativeLibrary Include="lib\x86_64\libpocketsphinxwrap.so" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />

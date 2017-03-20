@@ -117,7 +117,7 @@ namespace XamarinAndroidSphinx
             else
                 timeoutSamples = NO_TIMEOUT;
             remainingSamples = timeoutSamples;
-            
+
             _recorder.StartRecording();
 
             if (_recorder.RecordingState == RecordState.Stopped)
@@ -128,18 +128,14 @@ namespace XamarinAndroidSphinx
             }
 
             Log.Debug(TAG, "Starting decoding");
-
-
+            
             _decoder.StartUtt();
             short[] buffer = new short[bufferSize];
             bool inSpeech = _decoder.GetInSpeech();
 
             _recorder.Read(buffer, 0, buffer.Length);
-
-
-
-            while (!_interruption.IsCancellationRequested
-                    && ((timeoutSamples == NO_TIMEOUT) || (remainingSamples > 0)))
+            
+            while (!_interruption.IsCancellationRequested && ((timeoutSamples == NO_TIMEOUT) || (remainingSamples > 0)))
             {
                 int nread = _recorder.Read(buffer, 0, buffer.Length);
 
@@ -168,7 +164,8 @@ namespace XamarinAndroidSphinx
                         remainingSamples = timeoutSamples;
 
                     Hypothesis hypothesis = _decoder.Hyp();
-                    OnResult(hypothesis, false);
+                    if (hypothesis != null)
+                        OnResult(hypothesis, false);
                 }
 
                 if (timeoutSamples != NO_TIMEOUT)
