@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets.cs" />
     <Compile Include="CSharp_Wrapper\Config.cs" />
     <Compile Include="CSharp_Wrapper\Decoder.cs" />
     <Compile Include="CSharp_Wrapper\Feature.cs" />
