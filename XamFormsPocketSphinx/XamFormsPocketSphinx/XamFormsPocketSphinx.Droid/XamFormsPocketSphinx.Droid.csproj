@@ -109,33 +109,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CSharp_Wrapper\Config.cs" />
-    <Compile Include="CSharp_Wrapper\Decoder.cs" />
-    <Compile Include="CSharp_Wrapper\Feature.cs" />
-    <Compile Include="CSharp_Wrapper\FrontEnd.cs" />
-    <Compile Include="CSharp_Wrapper\FsgModel.cs" />
-    <Compile Include="CSharp_Wrapper\Hypothesis.cs" />
-    <Compile Include="CSharp_Wrapper\Jsgf.cs" />
-    <Compile Include="CSharp_Wrapper\JsgfIterator.cs" />
-    <Compile Include="CSharp_Wrapper\JsgfRule.cs" />
-    <Compile Include="CSharp_Wrapper\Lattice.cs" />
-    <Compile Include="CSharp_Wrapper\LogMath.cs" />
-    <Compile Include="CSharp_Wrapper\NBest.cs" />
-    <Compile Include="CSharp_Wrapper\NBestIterator.cs" />
-    <Compile Include="CSharp_Wrapper\NBestList.cs" />
-    <Compile Include="CSharp_Wrapper\NGramModel.cs" />
-    <Compile Include="CSharp_Wrapper\NGramModelSet.cs" />
-    <Compile Include="CSharp_Wrapper\NGramModelSetIterator.cs" />
-    <Compile Include="CSharp_Wrapper\PocketSphinx.cs" />
-    <Compile Include="CSharp_Wrapper\PocketSphinxPINVOKE.cs" />
-    <Compile Include="CSharp_Wrapper\Segment.cs" />
-    <Compile Include="CSharp_Wrapper\SegmentIterator.cs" />
-    <Compile Include="CSharp_Wrapper\SegmentList.cs" />
-    <Compile Include="CSharp_Wrapper\SphinxBase.cs" />
-    <Compile Include="CSharp_Wrapper\SphinxBasePINVOKE.cs" />
-    <Compile Include="CSharp_Wrapper\SWIGTYPE_p_p_char.cs" />
-    <Compile Include="CSharp_Wrapper\SWIGTYPE_p_p_p_mfcc_t.cs" />
-    <Compile Include="CSharp_Wrapper\SWIGTYPE_p_void.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -164,10 +137,6 @@
     <AndroidAsset Include="Assets\model\lm\en-us-phone.lm.bin" />
     <AndroidAsset Include="Assets\model\lm\en-us.lm.bin" />
     <AndroidAsset Include="Assets\model\lm\weather.dmp" />
-    <AndroidNativeLibrary Include="lib\arm64-v8a\libpocketsphinxwrap.so" />
-    <AndroidNativeLibrary Include="lib\armeabi-v7a\libpocketsphinxwrap.so" />
-    <AndroidNativeLibrary Include="lib\x86\libpocketsphinxwrap.so" />
-    <AndroidNativeLibrary Include="lib\x86_64\libpocketsphinxwrap.so" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
@@ -187,6 +156,10 @@
     <AndroidResource Include="Resources\values\styles.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\XamarinAndroidSphinx\XamarinAndroidSphinx.csproj">
+      <Project>{e25e430f-0420-4b97-9f36-a09cddd63f78}</Project>
+      <Name>XamarinAndroidSphinx</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XamFormsPocketSphinx\XamFormsPocketSphinx.csproj">
       <Project>{c4f08bd3-c7e0-436d-be2b-68bd3686a27b}</Project>
       <Name>XamFormsPocketSphinx</Name>

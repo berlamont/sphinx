@@ -12,6 +12,7 @@ using PocketSphinx;
 using System.IO;
 using Android.Content.Res;
 using System.Collections.Generic;
+using Xamarin.Forms;
 
 namespace XamFormsPocketSphinx.Droid
 {
@@ -26,7 +27,11 @@ namespace XamFormsPocketSphinx.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
-      
+
+            Java.IO.File file = Forms.Context.GetExternalFilesDir(null);
+
+
+
             Config c = Decoder.DefaultConfig();
             c.SetString("-hmm", "/storage/emulated/0/SPHINX/model/hmm/en-us");
             c.SetString("-lm", "/storage/emulated/0/SPHINX/model/lm/en-us.lm.bin");
