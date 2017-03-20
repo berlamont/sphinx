@@ -33,7 +33,7 @@ namespace XamarinAndroidSphinx
         private Thread _recognizerThread;
         private CancellationTokenSource _interruption;
 
-        protected SpeechRecognizer(Config config)
+        public SpeechRecognizer(Config config)
         {
             _decoder = new Decoder(config);
             sampleRate = (int)_decoder.GetConfig().GetFloat("-samprate");
@@ -117,8 +117,7 @@ namespace XamarinAndroidSphinx
             else
                 timeoutSamples = NO_TIMEOUT;
             remainingSamples = timeoutSamples;
-
-
+            
             _recorder.StartRecording();
 
             if (_recorder.RecordingState == RecordState.Stopped)
