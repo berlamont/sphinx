@@ -130,7 +130,7 @@ namespace XamarinAndroidSphinx
             Log.Debug(TAG, "Starting decoding");
             
             _decoder.StartUtt();
-            short[] buffer = new short[bufferSize];
+            byte[] buffer = new byte[bufferSize];
             bool inSpeech = _decoder.GetInSpeech();
 
             _recorder.Read(buffer, 0, buffer.Length);
@@ -139,14 +139,14 @@ namespace XamarinAndroidSphinx
             {
                 int nread = _recorder.Read(buffer, 0, buffer.Length);
 
-                if (-1 == nread)
+                if (nread == -1)
                 {
                     throw new RuntimeException("error reading audio buffer");
                 }
                 else if (nread > 0)
                 {
-                    var bytes = buffer.Select(s => (byte)s).ToArray();
-                    _decoder.ProcessRaw(bytes, nread, false, false);
+                    //var bytes = buffer.Select(s => (byte)s).ToArray();
+                    _decoder.ProcessRaw(buffer, nread, false, false);
 
                     // int max = 0;
                     // for (int i = 0; i < nread; i++) {
