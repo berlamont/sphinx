@@ -77,7 +77,7 @@ namespace XamarinAndroidSphinx
                 var reader = new System.IO.StreamReader(assetFile.Path);
                 var content = await reader.ReadToEndAsync();
                 var lines = content.Split('\n');
-
+                
                 foreach (string line in lines)
                 {
                     String[] fields = line.Split(' ');
@@ -118,7 +118,7 @@ namespace XamarinAndroidSphinx
             PrintWriter pw = new PrintWriter(new File(assetListFile.Path));
             foreach (var entry in items)
             {
-                await pw.WriteAsync($"{entry.Key} {entry.Value}\n");
+                await pw.PrintlnAsync($"{entry.Key} {entry.Value}");
                 System.Diagnostics.Debug.WriteLine(this.GetType().Name, $"Wrinting {entry.Key} {entry.Value} in {assetListFile.Path}");
             }
             pw.Close();

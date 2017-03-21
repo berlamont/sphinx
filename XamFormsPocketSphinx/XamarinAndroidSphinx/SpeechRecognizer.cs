@@ -166,7 +166,11 @@ namespace XamarinAndroidSphinx
 
                     Hypothesis hypothesis = _decoder.Hyp();
                     if (hypothesis != null)
+                    {
                         OnResult(hypothesis, false);
+                        //if(hypothesis.Hypstr.Equals(_decoder.GetSearch()))
+                        //    buffer = new byte[bufferSize];
+                    }
                 }
 
                 if (timeoutSamples != NO_TIMEOUT)
