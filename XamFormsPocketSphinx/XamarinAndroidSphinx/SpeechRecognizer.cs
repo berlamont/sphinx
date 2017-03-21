@@ -169,8 +169,6 @@ namespace XamarinAndroidSphinx
                     if (hypothesis != null)
                     {
                         OnResult(hypothesis, false);
-                        //if(hypothesis.Hypstr.Equals(_decoder.GetSearch()))
-                        //    buffer = new byte[bufferSize];
                     }
                 }
 
