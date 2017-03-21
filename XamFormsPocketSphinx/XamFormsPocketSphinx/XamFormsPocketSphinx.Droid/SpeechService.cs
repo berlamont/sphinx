@@ -25,7 +25,6 @@ namespace XamFormsPocketSphinx.Droid
         public void StartListening()
         {
             switchSearch(KWS_SEARCH);
-
         }
 
         public void StopListening()
@@ -57,6 +56,7 @@ namespace XamFormsPocketSphinx.Droid
             _recognizer.Result += Recognizer_Result;
             _recognizer.InSpeechChange += Recognizer_InSpeechChange;
             _recognizer.Timeout += Recognizer_Timeout;
+            _recognizer.Stopped += _recognizer_Stopped;
 
             /** In your application you might not need to add all those searches.
              * They are added here for demonstration. You can leave just one.
@@ -81,19 +81,23 @@ namespace XamFormsPocketSphinx.Droid
             /*File phoneticModel = new File(assetsDir, "en-phone.dmp");
             recognizer.Ad(PHONE_SEARCH, phoneticModel);*/
 
-            switchSearch(KWS_SEARCH);
+            //switchSearch(KWS_SEARCH);
 
+        }
+
+        private void _recognizer_Stopped(object sender, EventArgs e)
+        {
+            MainPage.ViewModel.IsListening = false;
         }
 
         private void Recognizer_Timeout(object sender, EventArgs e)
         {
-            int i = 0;
+            MainPage.ViewModel.IsListening = false;
         }
 
         private void Recognizer_InSpeechChange(object sender, bool e)
         {
             MainPage.ViewModel.IsInSpeech = e;
-            int i = 0;
         }
 
         private void Recognizer_Result(object sender, SpeechResultEvent e)
@@ -107,21 +111,13 @@ namespace XamFormsPocketSphinx.Droid
 
         private void switchSearch(String searchName)
         {
-
-            MainPage.ViewModel.IsListening = _recognizer.Stop();
-
             // If we are not spotting, start listening with timeout (10000 ms or 10 seconds).
             if (searchName.Equals(KWS_SEARCH))
                 _recognizer.StartListening(searchName);
             else
                 _recognizer.StartListening(searchName, 10000);
 
-
             MainPage.ViewModel.IsListening = true;
-
-            //String caption = getResources().getString(captions.get(searchName));
-            //((TextView)findViewById(R.id.caption_text)).setText(caption);
         }
-
     }
 }

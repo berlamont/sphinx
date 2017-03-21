@@ -9,6 +9,8 @@
         <Label Text="Welcome to Xamarin Sphinx!"
                VerticalOptions="Center"
                HorizontalOptions="Center" />
+        
+        <Label Text="{Binding Hypothesis}" FontAttributes="Bold"></Label>
 
         <ActivityIndicator IsRunning="{Binding IsListening}"></ActivityIndicator>
 
