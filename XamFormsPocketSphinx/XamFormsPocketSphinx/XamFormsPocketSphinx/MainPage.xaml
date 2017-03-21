@@ -4,8 +4,22 @@
              xmlns:local="clr-namespace:XamFormsPocketSphinx"
              x:Class="XamFormsPocketSphinx.MainPage">
 
-  <Label Text="Welcome to Xamarin Forms!"
-           VerticalOptions="Center"
-           HorizontalOptions="Center" />
+    <StackLayout Orientation="Vertical">
+
+        <Label Text="Welcome to Xamarin Sphinx!"
+               VerticalOptions="Center"
+               HorizontalOptions="Center" />
+
+        <ActivityIndicator IsRunning="{Binding IsListening}"></ActivityIndicator>
+
+        <Switch IsToggled="{Binding IsInSpeech}">In Speech</Switch>
+
+        <Button Text="Start Keyword Spotting"
+                Command="{Binding StartListening}"></Button>
+
+        <Button Text="Stop "
+                Command="{Binding StopListening}"></Button>
+
+    </StackLayout>
 
 </ContentPage>

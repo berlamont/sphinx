@@ -78,6 +78,7 @@ namespace XamarinAndroidSphinx
                 return false;
 
             _interruption.Cancel();
+            _recognizerThread.Join();
 
             _recognizerThread = null;
             return true;
