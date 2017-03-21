@@ -78,6 +78,7 @@ namespace XamarinAndroidSphinx
                 return false;
 
             _interruption.Cancel();
+            //_recognizerThread.Join();
 
             _recognizerThread = null;
             return true;
@@ -168,8 +169,6 @@ namespace XamarinAndroidSphinx
                     if (hypothesis != null)
                     {
                         OnResult(hypothesis, false);
-                        //if(hypothesis.Hypstr.Equals(_decoder.GetSearch()))
-                        //    buffer = new byte[bufferSize];
                     }
                 }
 

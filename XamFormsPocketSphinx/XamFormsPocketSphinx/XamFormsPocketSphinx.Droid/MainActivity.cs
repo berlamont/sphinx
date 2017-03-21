@@ -39,88 +39,7 @@ namespace XamFormsPocketSphinx.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
-
-
-            
-
-
-
-            //Java.IO.File file = Forms.Context.GetExternalFilesDir(null);
-
-
-
-            //Config c = Decoder.DefaultConfig();
-            //c.SetString("-hmm", "/storage/emulated/0/SPHINX/model/hmm/en-us");
-            //c.SetString("-lm", "/storage/emulated/0/SPHINX/model/lm/en-us.lm.bin");
-            //c.SetString("-dict", "/storage/emulated/0/SPHINX/model/dict/cmudict-en-us.dict");
-            //Decoder d = new Decoder(c);
-
-            //File.Exists("/storage/emulated/0/SPHINX/recording/goforward.raw");
-
-            //bool create, erase;
-            //var dir = new Java.IO.File(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath + "/SPHINX"); //  /storage/emulated/0/SPHINX
-            //if (!dir.Exists())
-            //    create = dir.Mkdirs();
-            //if (dir.Exists())
-            //    erase = dir.Delete();
-
-            //byte[] data = null;
-
-            //AssetManager assets = this.Assets;
-            //using (var stream = assets.Open("recording/goforward.raw"))
-            //{
-            //    var memoryStream = new System.IO.MemoryStream();
-            //    stream.CopyTo(memoryStream);
-            //    data = memoryStream.ToArray();
-            //    memoryStream.Close();
-            //    assets.Close();
-            //}
-
-            //int n;
-            //string[] list = new string[];
-            //list = assets.List("model/hmm/cmudict-en-us.dict");
-            //using (var stream = assets.Open("model/hmm/cmudict-en-us.dict"))
-            //{
-            //    var memoryStream = new MemoryStream();
-            //    stream.CopyTo(memoryStream);
-            //    data = memoryStream.ToArray();
-            //    WriteFile("cmudict-en-us.dict", data);
-            //    memoryStream.Close();
-            //    assets.Close();
-            //}
-
-            //using (var stream = assets.Open("model/dict/cmudict-en-us.dict"))
-            //{
-            //    var memoryStream = new MemoryStream();
-            //    stream.CopyTo(memoryStream);
-            //    data = memoryStream.ToArray();
-            //    WriteFile("cmudict-en-us.dict", data);
-            //    memoryStream.Close();
-            //    assets.Close();
-            //}
-
-            //using (var stream = assets.Open("model/dict/cmudict-en-us.dict"))
-            //{
-            //    var memoryStream = new MemoryStream();
-            //    stream.CopyTo(memoryStream);
-            //    data = memoryStream.ToArray();
-            //    WriteFile("cmudict-en-us.dict", data);
-            //    memoryStream.Close();
-            //    assets.Close();
-            //}
-
-            // byte[] data = File.ReadAllBytes("/storage/emulated/0/SPHINX/recording/goforward.raw");
-            //d.StartUtt();
-            //d.ProcessRaw(data, data.Length, false, false);
-            //d.EndUtt();
-
-            //System.Console.WriteLine("Result is '{0}'", d.Hyp().Hypstr);
-
-            //foreach (Segment s in d.Seg())
-            //{
-            //    System.Console.WriteLine(s);
-            //}
-            
+                        
             RunRecognizerSetup();
 
             LoadApplication(new App());
@@ -156,7 +75,7 @@ namespace XamFormsPocketSphinx.Droid
 
             // Create keyword-activation search.
             recognizer.AddKeyphraseSearch(KWS_SEARCH, KEYPHRASE);
-
+            /*
             // Create grammar-based search for selection between demos
             File menuGrammar = new File(assetsDir, "menu.gram");
             recognizer.AddGrammarSearch(MENU_SEARCH, menuGrammar);
@@ -172,7 +91,7 @@ namespace XamFormsPocketSphinx.Droid
             // Phonetic search
             /*File phoneticModel = new File(assetsDir, "en-phone.dmp");
             recognizer.Ad(PHONE_SEARCH, phoneticModel);*/
-
+            
             switchSearch(KWS_SEARCH);
 
         }
@@ -193,6 +112,7 @@ namespace XamFormsPocketSphinx.Droid
             if (e.Hypothesis != null)
             {
                 System.Diagnostics.Debug.WriteLine(e.Hypothesis.Hypstr);
+                //switchSearch(KWS_SEARCH);
             }
         }
 
