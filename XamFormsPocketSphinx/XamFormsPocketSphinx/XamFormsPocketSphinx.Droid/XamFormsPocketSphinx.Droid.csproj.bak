@@ -17,7 +17,7 @@
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
     <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
     <AndroidStoreUncompressedFileExtensions />
     <MandroidI18n />
@@ -137,6 +137,36 @@
     <AndroidAsset Include="Assets\model\lm\en-us-phone.lm.bin" />
     <AndroidAsset Include="Assets\model\lm\en-us.lm.bin" />
     <AndroidAsset Include="Assets\model\lm\weather.dmp" />
+    <AndroidAsset Include="Assets\sync\en-us-ptm\feat.params" />
+    <AndroidAsset Include="Assets\sync\en-us-ptm\feat.params.md5" />
+    <AndroidAsset Include="Assets\sync\en-us-ptm\mdef" />
+    <AndroidAsset Include="Assets\sync\en-us-ptm\mdef.md5" />
+    <AndroidAsset Include="Assets\sync\en-us-ptm\means" />
+    <AndroidAsset Include="Assets\sync\en-us-ptm\means.md5" />
+    <AndroidAsset Include="Assets\sync\en-us-ptm\noisedict" />
+    <AndroidAsset Include="Assets\sync\en-us-ptm\noisedict.md5" />
+    <AndroidAsset Include="Assets\sync\en-us-ptm\README" />
+    <AndroidAsset Include="Assets\sync\en-us-ptm\README.md5" />
+    <AndroidAsset Include="Assets\sync\en-us-ptm\sendump" />
+    <AndroidAsset Include="Assets\sync\en-us-ptm\sendump.md5" />
+    <AndroidAsset Include="Assets\sync\en-us-ptm\transition_matrices" />
+    <AndroidAsset Include="Assets\sync\en-us-ptm\transition_matrices.md5" />
+    <AndroidAsset Include="Assets\sync\en-us-ptm\variances" />
+    <AndroidAsset Include="Assets\sync\en-us-ptm\variances.md5" />
+    <AndroidAsset Include="Assets\sync\cmudict-en-us.dict" />
+    <AndroidAsset Include="Assets\sync\cmudict-en-us.dict.md5" />
+    <AndroidAsset Include="Assets\sync\digits.gram" />
+    <AndroidAsset Include="Assets\sync\digits.gram.md5" />
+    <AndroidAsset Include="Assets\sync\en-phone.dmp" />
+    <AndroidAsset Include="Assets\sync\en-phone.dmp.md5" />
+    <AndroidAsset Include="Assets\sync\menu.gram" />
+    <AndroidAsset Include="Assets\sync\menu.gram.md5" />
+    <AndroidAsset Include="Assets\sync\weather.dmp" />
+    <AndroidAsset Include="Assets\sync\weather.dmp.md5" />
+    <AndroidNativeLibrary Include="lib\arm64-v8a\libpocketsphinxwrap.so" />
+    <AndroidNativeLibrary Include="lib\armeabi-v7a\libpocketsphinxwrap.so" />
+    <AndroidNativeLibrary Include="lib\x86\libpocketsphinxwrap.so" />
+    <AndroidNativeLibrary Include="lib\x86_64\libpocketsphinxwrap.so" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
@@ -165,7 +195,9 @@
       <Name>XamFormsPocketSphinx</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidAsset Include="Assets\sync\assets.lst" />
+  </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\recording\goforward.raw" />
   </ItemGroup>
