@@ -80,8 +80,11 @@ namespace XamarinAndroidSphinx
                 
                 foreach (string line in lines)
                 {
-                    String[] fields = line.Split(' ');
-                    items.Add(fields[0], fields[1]);
+                    if (!line.Equals(String.Empty))
+                    {
+                        String[] fields = line.Split(' ');
+                        items.Add(fields[0], fields[1]);
+                    }
                 }
                 return items;
             }
