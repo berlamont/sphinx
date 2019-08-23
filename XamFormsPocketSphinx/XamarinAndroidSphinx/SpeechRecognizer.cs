@@ -20,6 +20,7 @@ namespace XamarinAndroidSphinx
         public event EventHandler<bool> InSpeechChange;
         public event EventHandler<SpeechResultEvent> Result;
         public event EventHandler Timeout;
+        public event EventHandler Stopped;
 
 
         protected static String TAG => nameof(SpeechRecognizer);
@@ -78,6 +79,7 @@ namespace XamarinAndroidSphinx
                 return false;
 
             _interruption.Cancel();
+            _recognizerThread.Join();
 
             _recognizerThread = null;
             return true;
@@ -92,7 +94,7 @@ namespace XamarinAndroidSphinx
                 Hypothesis hypothesis = _decoder.Hyp();
                 OnResult(hypothesis, true);
             }
-            return result;
+            return !result;
         }
 
         public bool Cancel()
@@ -168,8 +170,6 @@ namespace XamarinAndroidSphinx
                     if (hypothesis != null)
                     {
                         OnResult(hypothesis, false);
-                        //if(hypothesis.Hypstr.Equals(_decoder.GetSearch()))
-                        //    buffer = new byte[bufferSize];
                     }
                 }
 
@@ -187,6 +187,7 @@ namespace XamarinAndroidSphinx
             {
                 OnTimeout();
             }
+            OnStopped();
         }
 
         private void OnResult(Hypothesis hypothesis, bool finalResult)
@@ -244,6 +245,11 @@ namespace XamarinAndroidSphinx
         public void AddKeywordSearch(String name, Java.IO.File file)
         {
             _decoder.SetKws(name, file.Path);
+        }
+
+        protected virtual void OnStopped()
+        {
+            Stopped?.Invoke(this, EventArgs.Empty);
         }
     }
 }

@@ -9,9 +9,13 @@ namespace XamFormsPocketSphinx
 {
     public partial class MainPage : ContentPage
     {
+        public static MainPageViewModel ViewModel { get; set; }
+
         public MainPage()
         {
             InitializeComponent();
+
+            this.BindingContext = ViewModel = new MainPageViewModel();
         }
     }
 }
